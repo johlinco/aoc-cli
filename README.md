@@ -14,7 +14,7 @@
   ## Installation
 
   ### Prerequisites
-  - Go 1.19 or later
+  - Go 1.21 or later
   - Advent of Code session cookie (for fetching inputs and submitting)
 
   ### Build from Source
@@ -28,9 +28,30 @@
   # Move binary to a directory in your PATH
   sudo mv aoc /usr/local/bin/
 
-  Configuration
+  ## Configuration
 
-  Session Cookie Setup
+  ### Environment Variables
+
+  The CLI supports loading environment variables from a `.env` file in your project directory, or from system environment variables.
+
+  #### Option 1: Using .env file (Recommended)
+
+  Create a `.env` file in your project root:
+
+  ```bash
+  # .env
+  AOC_SESSION=your_session_cookie_here
+  AOC_YEAR=2025
+  ```
+
+  #### Option 2: System Environment Variables
+
+  ```bash
+  export AOC_SESSION="your_session_cookie_here"
+  export AOC_YEAR="2025"
+  ```
+
+  ### Session Cookie Setup
 
   To fetch inputs and submit answers, you need your Advent of Code session cookie:
 
@@ -38,14 +59,13 @@
   2. Open browser developer tools (F12)
   3. Go to Application/Storage → Cookies → adventofcode.com
   4. Copy the session value
-  5. Set environment variable:
+  5. Add to `.env` file or set as environment variable
 
-  export AOC_SESSION="your_session_cookie_here"
+  ### Year Configuration
 
-  Year Configuration
-
-  Set the year (defaults to 2024):
-  export AOC_YEAR="2024"
+  Set the year (defaults to 2024 if not specified):
+  - In `.env`: `AOC_YEAR=2025`
+  - As environment variable: `export AOC_YEAR="2025"`
 
   Usage
 
@@ -150,12 +170,13 @@
   - Update expected test values after implementing your solution
   - Use the benchmarks to optimize performance for larger inputs
   - The tool automatically handles year selection via AOC_YEAR environment variable
+  - Use `.env` file for persistent configuration (recommended over setting environment variables each time)
 
   Troubleshooting
 
   "Session required" error
 
-  Make sure your AOC_SESSION environment variable is set correctly.
+  Make sure your AOC_SESSION is set correctly in your `.env` file or as an environment variable.
 
   "File not found" errors
 
@@ -163,7 +184,7 @@
 
   Build issues
 
-  Verify you have Go 1.19+ installed: go version
+  Verify you have Go 1.21+ installed: `go version`
 
   Contributing
 
