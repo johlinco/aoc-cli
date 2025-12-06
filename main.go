@@ -3,9 +3,13 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	godotenv.Load()
+
 	if len(os.Args) < 2 {
 		printUsage()
 		os.Exit(1)
